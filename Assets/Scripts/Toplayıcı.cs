@@ -5,11 +5,17 @@ using UnityEngine;
 public class Toplayıcı : MonoBehaviour
 {
     #region Değişkenler
-    [SerializeField]
-    private GameObject AnaPara;
+    GameObject AnaPara;
 
     [SerializeField]
     private int stacked;
+    #endregion
+
+    #region Start
+    private void Start()
+    {
+        AnaPara = GameObject.Find("AnaPara");
+    }
     #endregion
 
     #region Update
@@ -20,10 +26,17 @@ public class Toplayıcı : MonoBehaviour
     }
     #endregion
 
+    #region DecreaseStack
+    public void DecreaseStack()
+    {
+        stacked--;
+    }
+    #endregion
+
     #region OnTriggerEnter
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Topla")
+        if ((other.gameObject.tag == "Topla") && (other.gameObject.GetComponent<ToplanabilirPara>().GetisCollected() == false))
         {
             stacked += 1;
             other.gameObject.GetComponent<ToplanabilirPara>().CollectedYap();
@@ -32,4 +45,6 @@ public class Toplayıcı : MonoBehaviour
         }
     }
     #endregion
+
+    
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ToplanabilirPara : MonoBehaviour
 {
+    public Toplayýcý toplayici;
+
     #region Deðiþkenler
     bool isCollected;
     int index;
@@ -47,6 +49,19 @@ public class ToplanabilirPara : MonoBehaviour
     public void SetIndex(int index)
     {
         this.index = index;
+    }
+    #endregion
+
+    #region OnTriggerEnter
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Engel")
+        {
+            toplayici.DecreaseStack();
+            transform.parent = null;
+            GetComponent<BoxCollider>().enabled = false;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
     }
     #endregion
 }
