@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Toplayıcı : MonoBehaviour
 {
+    public GameManager gm;
+
     #region Değişkenler
     GameObject AnaPara;
 
-    [SerializeField]
-    private int stacked;
+    public int stacked;
     #endregion
 
     #region Start
@@ -21,8 +22,8 @@ public class Toplayıcı : MonoBehaviour
     #region Update
     private void Update()
     {
-        AnaPara.transform.position = new Vector3(transform.position.x, stacked + 1, transform.position.z);
-        this.transform.localPosition = new Vector3(0, -stacked, 0);
+        AnaPara.transform.position = new Vector3(transform.position.x, stacked+1, transform.position.z);
+        this.transform.localPosition = new Vector3(0, -stacked, 0);        
     }
     #endregion
 
@@ -43,8 +44,17 @@ public class Toplayıcı : MonoBehaviour
             other.gameObject.GetComponent<ToplanabilirPara>().SetIndex(stacked);
             other.gameObject.transform.parent = AnaPara.transform;
         }
+
+        #region level sonu kısmı
+        if (other.gameObject.tag == "Levelsonu")
+        {
+            gm.oyunBasladi = false;
+            gm.oyunSonu = true;
+        }
+        #endregion
     }
     #endregion
 
-    
+
+
 }
