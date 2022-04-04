@@ -59,6 +59,7 @@
     <Compile Include="Assets\ImportedPackages\Supercyan Character Pack Animal People Sample\Scripts\DemoFree.cs" />
     <Compile Include="Assets\ImportedPackages\Supercyan Character Pack Animal People Sample\Scripts\SimpleSampleCharacterControl.cs" />
     <Compile Include="Assets\Scripts\Hareket.cs" />
+    <Compile Include="Assets\Scripts\KameraTakip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ImportedPackages\Supercyan Character Pack Animal People Sample\Shaders\SupercyanShader.shader" />
