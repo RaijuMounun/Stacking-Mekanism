@@ -14,13 +14,34 @@ public class Hareket : MonoBehaviour
     [SerializeField]
     [Tooltip("Saða sola gitme hýzý")]
     private float zEksenHiz;
+
+    bool oyunBasladi;
+    public GameObject oyunuBaslatTus;
+    #endregion
+
+    #region Start
+    private void Start()
+    {
+        oyunBasladi = false;
+    }
     #endregion
 
     #region Update
     void Update()
     {
-        float yatayEksen = Input.GetAxis("Horizontal")*zEksenHiz*Time.deltaTime;    //yatay hareket
-        this.transform.Translate(yatayEksen, 0, xEksenHiz * Time.deltaTime);        //ileri hareket
+        if (oyunBasladi == true)
+        {
+            float yatayEksen = Input.GetAxis("Horizontal") * zEksenHiz * Time.deltaTime;    //yatay hareket
+            this.transform.Translate(yatayEksen, 0, xEksenHiz * Time.deltaTime);        //ileri hareket
+        }
+    }
+    #endregion
+
+    #region OyunuBaslat
+    public void OyunuBaslat()
+    {
+        oyunBasladi = true;
+        oyunuBaslatTus.SetActive(false);
     }
     #endregion
 }
